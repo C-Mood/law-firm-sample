@@ -1,0 +1,424 @@
+/* ---------- base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #cedbe3;
+  --card: #ffffff;
+  --ink: #111827;
+  --muted: #6b7280;
+  --line: #d1d5db;
+  --accent: #111827; /* keep it black like your sketch vibe */
+  --radius: 18px;
+}
+
+body {
+  min-width: 375px;
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/*header*/
+.site-header {
+  padding: 18px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 20px;
+}
+
+/*hero card*/
+.hero {
+  padding: 26px 0 48px;
+}
+
+.hero-card {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* top text area */
+.hero-content {
+  text-align: center;
+  padding-bottom: 18px;
+  color: #d35400;
+  max-width: none;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-content h1 {
+  margin: 0 0 8px;
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+.subtext {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.incident-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.incident {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.incident:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+/* diagonal split area */
+.hero-split {
+  position: relative;
+  margin-top: 2rem;
+  min-height: 560px;
+  border-radius: 0;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* diagonal line */
+.hero-split::after {
+  content: none;
+  position: absolute;
+  inset: -30%;
+  background: linear-gradient(
+    135deg,
+    transparent 49.2%,
+    rgba(0, 0, 0, 0.35) 50%,
+    transparent 50.8%
+  );
+  pointer-events: none;
+}
+
+.hero-media {
+  position: center;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-media img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* the layered triangles */
+.split-left,
+.split-right {
+  position: absolute;
+  inset: 0;
+  padding: 12px;
+}
+
+/* left triangle */
+.split-left {
+  clip-path: polygon(0 0, 100% 0, 0 175%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+/* right triangle */
+.split-right {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/* image area fills the left triangle */
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent;
+  object-fit: cover;
+  position: relative;
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05);
+  border: none;
+  outline: none;
+}
+
+.image-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+/* contact box sits bottom-right */
+.contact-box {
+  width: min(360px, 100%);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-box .cta-button {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-line {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.contact-line .label {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.phone {
+  color: #111;
+  text-decoration: none;
+}
+
+.contact-box h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.contact-line {
+  margin: 0 0 8px;
+  color: var(--ink);
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.contact-box .fine-print {
+  font-size: 0.85rem;
+  color: #666;
+  align-self: center;
+  text-align: center;
+}
+
+.label {
+  color: var(--muted);
+  min-width: 44px;
+}
+
+.phone {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.phone:hover {
+  text-decoration: underline;
+}
+
+.cta {
+  display: block;
+  margin-top: 12px;
+  padding: 12px 14px;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.fineprint {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 18px;
+  }
+
+  .hero-split {
+    overflow: visible;
+    background: transparent;
+    border: none;
+  }
+
+  .hero-split::after {
+    display: none;
+  }
+
+  .split-left,
+  .split-right {
+    position: relative;
+    inset: auto;
+    clip-path: none;
+    padding: 0;
+  }
+
+  .split-left {
+    margin-bottom: 1rem;
+  }
+
+  .image-placeholder {
+    min-height: 260px;
+  }
+
+  .image-bullets {
+    margin-top: -30px;
+  }
+
+  .image-bullets li {
+    margin-top: -10px;
+  }
+
+  .image-centered {
+    top: 100px !important;
+    left: 200px !important;
+    transform: translateX(-50%) !important;
+    width: min(90%, 520px);
+    text-align: center;
+    position: absolute;
+  }
+
+  .hero-badge {
+    transform: translate(-60px, -100px) scale(0.7);
+  }
+}
+
+/* everything sit here besides company name*/
+
+.page {
+  min-height: 100vh;
+  background: #cedbe3;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+.page-block {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 95vh;
+  padding: 1.5rem;
+  background: rgba(213, 230, 235, 0.96);
+  border-radius: 28px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  padding-bottom: 0;
+}
+
+/*image text*/
+
+.image-text {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  color: white;
+  z-index: 10;
+}
+
+.image-heading {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.image-bullets {
+  list-style: disc;
+  padding-left: 18px;
+  margin-top: 40px;
+}
+
+.image-bullets li {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  font-style: italic;
+}
+
+.image-centered {
+  margin-top: 6.7rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  position: static;
+  bottom: auto;
+  left: auto;
+  z-index: auto;
+  max-width: none;
+  transform: none;
+  position: absolute;
+}
+
+.hero-badge {
+  max-height: auto;
+}

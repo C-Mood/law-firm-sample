@@ -328,7 +328,7 @@ body {
   }
 
   .image-placeholder {
-    min-height: 260px;
+    min-height: auto;
   }
 
   .image-bullets {
@@ -354,8 +354,8 @@ body {
     left: 12px;
     right: auto;
     transform: none;
-    max-width: 180px;
-    width: 46vw;
+    max-width: 240px;
+    width: 62vw;
   }
   .hero-badge img {
     width: 100%;

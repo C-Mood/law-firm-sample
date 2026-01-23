@@ -347,6 +347,7 @@ body {
   }
   .image-text {
     position: static;
+    background: none;
   }
 
   .hero-badge {

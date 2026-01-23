@@ -358,8 +358,8 @@ body {
     width: 62vw;
   }
   .hero-badge img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 260px;
     display: block;
   }
 }
